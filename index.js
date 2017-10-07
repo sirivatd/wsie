@@ -1,5 +1,7 @@
 function displayData(data) {
 	console.log(data);
+	const numOfPlaces = data.results_found;
+	$('#numOfPlaces').text(numOfPlaces + " Locations Found");
 }
 
 function getDataFromApi(searchTerm, callback) {
@@ -22,4 +24,8 @@ $('#startBtn').on('click', event => {
 	const searchTerm = $('#query-text').val();
 	console.log(searchTerm);
 	getDataFromApi(searchTerm, displayData);
+	$('#start-section').hide();
+	$('#question-section').show();
 })
+
+$('#question-section').hide();

@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="main.css">
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 <div class="footer">
 <p>Created by: Don Sirivat</p>
 </div>
@@ -9,12 +10,28 @@
 <main>
 <body>
 
-<div class="hero-bkg-animated">
+<div class="hero-bkg-animated" id="start-section">
 	<img src="assets/munchable_black.png" id="logo" alt="munchable logo">
   <h1>Where Should I Eat?</h1>
   <input type='text' id='query-text' placeholder="Enter Location Here e.g. South Beach">
+  <input type='button' id="startBtn" value="I'm Hungry">
 </div>
-<input type='button' id="startBtn" value="I'm Hungry">
+
+<div id="question-section">
+	<h1 id="numOfPlaces">3456 Locations Found</h1>
+	<h2>Finding places near you...</h2>
+	<div id="question">
+		<h3>Example Question Text?</h3>
+		<input type='button' value="Answer A">
+		<input type='button' value="Answer B">
+		<input type='button' value="Answer C">
+		<input type='button' value="Answer D">
+	</div>
+	<div>
+	<input type='button' value="See Results" id='resultsBtn'>
+</div>
+</div>
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="index.js"></script>
 </body>
