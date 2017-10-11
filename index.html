@@ -3,41 +3,41 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="main.css" rel="stylesheet" type="text/css" />
+    <title>WSIE</title>
+    <link href="main.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
   </head>
   <body>
+    <header>
+      <img src="assets/wsie_logo.png" id="headerIcon">
+    </header>
     <div id="start-section">
-      <input type='text' placeholder='Enter Location Here e.g. South Beach' id="user-input">
-    <input type='button' value="I'm Hungry" id='startBtn'>
-    </div>
-    <div class="loader"></div>
-    <div class="result-section">
-      <h3 id="prompt">How about...</h3>
+      <img src="assets/wsie_logo.png" id="mainLogo">
+      <h3 id="textLogo">What Should I Eat?</h3>
+      <input type='button' value="I'm Hungry" id="startBtn">
+    	</div>
+       <div class="loader"></div>
+    <div id="result-section">
       <div id="rest-info">
         <div id="imageContainer">
-          <img src="https://media-cdn.tripadvisor.com/media/photo-s/0a/7b/7b/c6/restaurant-view.jpg" id="restImage">
-          <h3 id="restName">Restaurant Name</h3>
-          <h5 id="rating">Average Rating: 5.0</h5>
+          <img id="restImage" src="http://www.ozarlington.com/wp-content/uploads/2017/04/bar-buffet.jpg">
         </div>
-        <h5 id="cuisine">Cuisine: Drinks Only</h5>
-          <h5 id="address">3512 greenwood avenue</h5>
-          <h5 id="averageCost">Average Cost for Two: $30</h5>
+        <div id="restSummary">
+          <h2 id="restName">Example Restaurant</h2>
+          <h4 id="restCat">Grilled Kittens</h4>
+          <p id="address">Example Address 215 Wilmette</p>
+          <p id="rating">Rating: 3.2 (Not Bad)</p>
+        </div>
       </div>
-      
-      <div id="menu-info">
-        <h3>Featured Items</h3>
-        <ul>
-          <li>Fried Catfish</li>
-          <li>Cheeseburger and Fries</li>
-          <li>Filet Mignon</li>
-          <li>Grilled Kittens</li>
-        </ul>
+      <div id="more-info">
+        <h4 id="averageText">Average Cost For Two</h2>
+        <h1 id="averageNum">$60</h1>
       </div>
-      <input type='button' value='Nah' id='nahBtn'>
+      <input type='button' value="Nah..." id="nahBtn">
     </div>
     <footer>
-      <p>Created by Don Sirivat</p>
+      <p id="footerText">Created by Don Sirivat</p>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>

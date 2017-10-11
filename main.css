@@ -8,78 +8,22 @@ body {
   width: 100%;
   margin: 0;
   text-align: center;
-  height: 400px;
-  padding-top: 120px;
+  height: 100vh;
   box-sizing: border-box;
   -webkit-animation: slide 20s linear infinite;
   position: relative;
-  padding-bottom:60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+  grid-template-rows: 60px 1fr 1fr 1fr 40px;
+  z-index: 0;
 }
 
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #383838;
-  color: white;
-  text-align: center;
-
-}
-#restImage {
-  background: black;
-  opacity: .5;
-  width: 100%;
-}
-
-#rest-info {
-  float: left;
-  height: 400px;
-  width: 60%;
+header {
+  height: 60px;
+  grid-column: 1/6;
+  grid-row: 1/2;
   background-color: white;
-  opacity: .9;
-  padding: 0px;
-  margin-top: 40px;
-  margin-left: 15px;
 }
-
-#menu-info {
-  float: right;
-  height: 400px;
-  width: 30%;
-  background-color: white;
-  opacity: .9;
-  padding: 0px;
-  margin-top: 40px;
-  margin-right: 15px;
-}
-
-#prompt {
-  margin-top: 20px;
-}
-
-.result-section {
-  position: absolute;
-  top: 0px;
-  width: 100%;
-}
-
-#imageContainer {
-  height: 50%;
-  width: 100%;
-  background-color: black;
-  opacity: .7;
-  position: relative;
-}
-
-#restName {
-  color: white;
-}
-
-#rating {
-  color: white;
-}
-
 
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -90,15 +34,156 @@ footer {
     margin: auto;
     animation: spin 2s linear infinite;
     z-index: 5;
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+
+#headerIcon {
+  margin-top: 10px;
+  height: 40px;
+  width: 40px;
+}
+
+footer {
+  background-color: white;
+  grid-column: 1/6;
+  grid-row: 6/7;
+  height: 40px;
+  z-index: 1;
+}
+
+#footerText {
+  font-family: 'Indie Flower', cursive;
+  color: #2d2b2b;
+  margin-top: 7px;
+}
+
+#start-section {
+  height: 300px;
+  width: 400px;
+  background-color: white;
+  grid-column: 3/4;
+  grid-row: 3/4;
+  z-index: 1;
+}
+
+#textLogo {
+  font-family: 'Indie Flower', cursive;
+  color: #2d2b2b;
+  font-size: 27px;
+;
+}
+
+#mainLogo {
+  height: 100px;
+  width: 100px;
+  margin-top: 30px;
+}
+
+#startBtn {
+  margin-top: 45px;
+  padding: 14px 40px;
+  border: none;
+  background-color: #2d2b2b;
+  border-radius: 8px;
+  color: white;
+  font-family: 'Indie Flower', cursive;
+}
+
+#startBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+#result-section {
+  grid-row: 1/7;
+  grid-column: 1/6;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+  grid-template-rows: 60px 1fr 1fr 1fr 40px;
+}
+
+#rest-info {
+  grid-column: 1/4;
+  grid-row: 3/4;
+  background-color: white;
+}
+
+#more-info {
+  background-color: white;
+  grid-column: 5/6;
+  grid-row: 3/4;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#imageContainer {
+  height: 100%;
+  width: 50%;
+  float: left;
+  background-color: black;
+  opacity: .7;
+}
+
+#restSummary {
+  height: 100%;
+  width: 50%;
+  float: right;
+}
+
+#restName {
+  margin-top: 5px;
+  font-family: 'Indie Flower', cursive;
+}
+
+#address {
+  font-family: 'Indie Flower', cursive;
+}
+
+#rating {
+  margin-top: 60px;
+  font-family: 'Indie Flower', cursive;
+}
+#restCat {
+  margin-top: 20px;
+  font-family: 'Indie Flower', cursive;
+}
+
+#averageText {
+  position: absolute;
+  top: 20px;
+  font-family: 'Indie Flower', cursive;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#averageNum {
+  position: absolute;
+  bottom: 5px;
+  font-family: 'Indie Flower', cursive;
 }
 
 #nahBtn {
-  display: block;
-  clear: both;
-  margin: 0 auto;
-  width: 100%;
-  height: 100px;
+  grid-column: 3/4;
+  grid-row: 4/5;
+  margin-top: 50px;
+  border: none;
+  height: 50px;
+  font-family: 'Indie Flower', cursive;
+  color: white;
+  border-radius: 8px;
+  background-color: #2d2b2b;
 }
+
+#nahBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
