@@ -2,6 +2,10 @@ let restIds = [];
 let latitude = 0;
 let longitude = 0;
 
+$('#mainLogo').on('click', event => {
+  console.log("Clicked");
+})
+
 $('#startBtn').on('click', event => {
   $('.loader').show();
   $('#start-section').hide();
@@ -23,6 +27,7 @@ function displayRestaurant(data) {
   $('#averageNum').text("$" + data.average_cost_for_two);
   $('#restCat').text(data.cuisines);
   $('#restImage').attr('src', data.featured_image);
+  $('#rating').text("Average Rating: " + data.user_rating.aggregate_rating + " (" + data.user_rating.rating_text + ")");
 }
 
 function  getRestaurantInfo(query, callback) {
@@ -89,7 +94,12 @@ function showPosition(position) {
 }
 
 function renderWSIE() {
+  var element = document.getElementById("headerIcon");
+  element.addEventListener("click", function() {
+    renderWSIE();
+  })
   $('#result-section').hide();
+  $('#start-section').show();
   $('.loader').hide();
   getLocation();
   $('.loader').show();
