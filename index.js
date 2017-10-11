@@ -20,7 +20,7 @@ function displayRestaurant(data) {
   $('.loader').hide();
   $('#restName').text(data.name);
   $('#address').text(data.location.address);
-  $('#averageNum').text(data.average_cost_for_two);
+  $('#averageNum').text("$" + data.average_cost_for_two);
   $('#restCat').text(data.cuisines);
   $('#restImage').attr('src', data.featured_image);
 }
