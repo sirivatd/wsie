@@ -89,6 +89,7 @@ function showPosition(position) {
   longitude = position.coords.longitude;
 
   $('.loader').hide();
+  $('#locationText').hide();
   console.log(latitude);
   console.log(longitude);
 }

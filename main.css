@@ -38,6 +38,12 @@ header {
     grid-row: 3/4;
 }
 
+#locationText {
+  grid-column: 3/4;
+  margin-top: 80px;
+  font-family: 'Indie Flower', cursive;
+}
+
 #headerIcon {
   margin-top: 10px;
   height: 40px;
