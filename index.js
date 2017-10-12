@@ -6,18 +6,24 @@ let longitude = 0;
 $('#startBtn').on('click', event => {
   $('.loader').show();
   $('#start-section').hide();
-  $('#result-section').show();
   getDataFromApi("", latitude, longitude, displayData);
 })
 
 $('#nahBtn').on('click', event => {
   $('.loader').show();
+  $('#result-section').hide();
   let randomNumber = Math.floor((Math.random() * 20) + 0);
   getRestaurantInfo(restIds[randomNumber], displayRestaurant);
 })
 
+$('#locationBtn').on('click', event => {
+  $('.loader').show();
+  getLocation();
+})
+
 function displayRestaurant(data) {
   $('.loader').hide();
+  $('#result-section').show();
   $('#restName').text(data.name);
   $('#address').text(data.location.address);
   $('#averageNum').text("$" + data.average_cost_for_two);
@@ -82,7 +88,8 @@ function showPosition(position) {
   longitude = position.coords.longitude;
 
   $('.loader').hide();
-  $('#locationText').hide();
+  $('#location-section').hide();
+  $('#start-section').show();
 }
 
 function renderWSIE() {
@@ -91,10 +98,9 @@ function renderWSIE() {
     renderWSIE();
   })
   $('#result-section').hide();
-  $('#start-section').show();
+  $('#start-section').hide();
+  $('#location-section').show();
   $('.loader').hide();
-  getLocation();
-  $('.loader').show();
 }
 
 $(renderWSIE);
