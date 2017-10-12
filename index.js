@@ -2,9 +2,6 @@ let restIds = [];
 let latitude = 0;
 let longitude = 0;
 
-$('#mainLogo').on('click', event => {
-  console.log("Clicked");
-})
 
 $('#startBtn').on('click', event => {
   $('.loader').show();
@@ -20,7 +17,6 @@ $('#nahBtn').on('click', event => {
 })
 
 function displayRestaurant(data) {
-  console.log(data);
   $('.loader').hide();
   $('#restName').text(data.name);
   $('#address').text(data.location.address);
@@ -47,11 +43,9 @@ function  getRestaurantInfo(query, callback) {
 }
 
 function displayData(data) {
-  console.log(data.restaurants.length);
   for(let i=0;i<data.restaurants.length;i++) {
     restIds.push(data.restaurants[i].restaurant.id);
   }
-  console.log(restIds);
   let randomNumber = Math.floor((Math.random() * 20) + 0);
   getRestaurantInfo(restIds[randomNumber], displayRestaurant);
 }
@@ -60,7 +54,6 @@ function getLocation() {
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
-    console.log("Something went wrong");
     renderWSIE();
   }
 }
@@ -90,8 +83,6 @@ function showPosition(position) {
 
   $('.loader').hide();
   $('#locationText').hide();
-  console.log(latitude);
-  console.log(longitude);
 }
 
 function renderWSIE() {
