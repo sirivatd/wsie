@@ -1,12 +1,12 @@
 let restIds = [];
 let latitude = 0;
 let longitude = 0;
-let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','y','z'];
 
 $('#startBtn').on('click', event => {
   $('.loader').show();
   $('#start-section').hide();
-  getDataFromApi(alphabet[Math.floor((Math.random() * 25) + 0)], latitude, longitude, displayData);
+  getDataFromApi(alphabet[Math.floor((Math.random() * 24) + 0)], latitude, longitude, displayData);
 })
 
 $('#nahBtn').on('click', event => {
