@@ -9,16 +9,37 @@ $('#startBtn').on('click', event => {
   getDataFromApi(alphabet[Math.floor((Math.random() * 24) + 0)], latitude, longitude, displayData);
 })
 
-$('#nahBtn').on('click', event => {
+$('#directionsBtn').on('click', event => {
   $('.loader').show();
   $('#result-section').hide();
   let randomNumber = Math.floor((Math.random() * 20) + 0);
   getRestaurantInfo(restIds[randomNumber], displayRestaurant);
 })
 
+function showResult(result) {
+  latitude = result.geometry.location.lat();
+  longitude = result.geometry.location.lng();
+  googlePlacesApi();
+  $('#location-section').hide();
+}
+
+function getLatitudeLongitude(callback, address) {
+  address = address || 'Ferrol, Galicia, Spain';
+  geocoder = new google.maps.Geocoder();
+  if(geocoder) {
+    geocoder.geocode({'address': address}, function (results, status) {
+      if(status == google.maps.GeocoderStatus.OK) {
+        callback(results[0]);
+      }
+    });
+  }
+}
+
 $('#locationBtn').on('click', event => {
   $('.loader').show();
-  getLocation();
+  console.log('Getting location');
+  let address = document.getElementById('address').value;
+  getLatitudeLongitude(showResult, address);
 })
 
 function displayRestaurant(data) {
@@ -32,7 +53,7 @@ function displayRestaurant(data) {
   $('#rating').text("Average Rating: " + data.user_rating.aggregate_rating + " (" + data.user_rating.rating_text + ")");
 }
 
-function  getRestaurantInfo(query, callback) {
+function getRestaurantInfo(query, callback) {
   const settings = {
     headers: {
       'user-key': '71d3b2da9be5426b8548cb6255342503'
@@ -86,21 +107,75 @@ $.ajax(settings);
 function showPosition(position) {
   latitude = position.coords.latitude;
   longitude = position.coords.longitude;
-
+  $.ajax(`http://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true`, {
+    method: 'GET',
+    success: (response) => {
+      console.log(response.results[0].formatted_address);
+      $('#address').val(response.results[0].formatted_address);
+    }
+  });
   $('.loader').hide();
-  $('#location-section').hide();
-  $('#start-section').show();
 }
 
+function displayGoogleData(data) {
+  console.log(data);
+}
+
+function googlePlacesApi() {
+  $.ajax(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=1000&type=food&key=AIzaSyCiYfZl22H043R3ENoXjr7vbM83aQj9XcY`, {
+    method: 'GET',
+    success: (response) => {
+      for(let i=0; i<response.results.length;i++) {
+        restIds.push(response.results[i].place_id);
+      }
+      console.log(response);
+      let randomNumber = Math.floor((Math.random() * response.results.length-1) + 0);
+      getLocationDetails(restIds[randomNumber]);
+    }
+  });
+}
+
+function getLocationDetails(restId) {
+  console.log(restId);
+  $.ajax(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${restId}&key=AIzaSyCiYfZl22H043R3ENoXjr7vbM83aQj9XcY`, {
+    method: 'GET',
+    success: (response) => {
+      console.log(response);
+      $('#mainText').text(response.result.name);
+      $('#rating').text("Rating: " + response.result.rating);
+      if(response.result.opening_hours.open_now) {
+        $('#price').text("Currently Open");
+      }
+      else {
+        $('#price').text("Currently Closed");
+      }
+      $('#number').text(response.result.international_phone_number);
+      $('#directionsBtn').attr('href', response.result.url);
+      $('#websiteBtn').attr('href', response.result.website);
+    }
+  });
+  $('.loader').hide();
+  $('#result-section').show();
+  $('#nextBtn').show();
+}
+
+$('#nextBtn').on('click', event => {
+  $('#result-section').hide();
+  $('#nextBtn').hide();
+  let randomNumber = Math.floor((Math.random() * restIds.length-1) + 0);
+  getLocationDetails(restIds[randomNumber]);
+  console.log(restIds[randomNumber]);
+  $('.loader').show();
+})
+
 function renderWSIE() {
-  var element = document.getElementById("headerIcon");
-  element.addEventListener("click", function() {
-    renderWSIE();
-  })
   $('#result-section').hide();
   $('#start-section').hide();
   $('#location-section').show();
   $('.loader').hide();
+  $('#nextBtn').hide();
+  $(getLocation);
+  //$(googlePlacesApi);
 }
 
 $(renderWSIE);

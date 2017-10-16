@@ -6,12 +6,17 @@
     <title>WSIE</title>
     <link href="main.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Tammudu" rel="stylesheet">
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
   </head>
   <body>
-    <header>
-      <img src="assets/wsie_logo.png" id="headerIcon">
-    </header>
+    <div class="video-container">
+    <video poster="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg" id="bgvid" playsinline autoplay muted loop>
+        <source src="assets/wsie.mp4" type="video/mp4">
+        </video>
+    </div>
+    <h1 id="mainText">Where Should I Eat?</h1>
     <div id="start-section">
       <img src="assets/wsie_logo.png" id="mainLogo">
       <h3 id="textLogo">What Should I Eat?</h3>
@@ -19,10 +24,10 @@
     	</div>
        <div class="loader">
        </div>
+    <input type='button' value='Not Feeling It' id="nextBtn">
     <div id="location-section">
-      <img src="assets/wsie_logo.png" id="mainLogo">
-      <h3 id="textLogo">What Should I Eat?</h3>
-      <input type='button' value="Get My Location" id="locationBtn">
+      <input type='text' placeholder="Enter your city" id="address">
+      <input type='button' value="I'm Hungry" id="locationBtn">
     </div>
     </div>
     <div id="result-section">
@@ -31,17 +36,13 @@
           <img id="restImage" src="http://www.ozarlington.com/wp-content/uploads/2017/04/bar-buffet.jpg">
         </div>
         <div id="restSummary">
-          <h2 id="restName">Example Restaurant</h2>
-          <h4 id="restCat">Grilled Kittens</h4>
-          <p id="address">Example Address 215 Wilmette</p>
-          <p id="rating">Rating: 3.2 (Not Bad)</p>
+          <p id="rating">Grilled Kittens</h4>
+          <p id="price">Example Address 215 Wilmette</p>
+          <p id="number">Rating: 3.2 (Not Bad)</p>
         </div>
       </div>
-      <div id="more-info">
-        <h4 id="averageText">Average Cost For Two</h2>
-        <h1 id="averageNum">$60</h1>
-      </div>
-      <input type='button' value="Nah..." id="nahBtn">
+      <a class='button' href='#' id="directionsBtn">Get Directions</a>
+      <a class='button' href='#' id="websiteBtn">See Website</a>
     </div>
     <footer>
       <p id="footerText">Created by <a href="http://dsirivat.com">Don Sirivat</p>

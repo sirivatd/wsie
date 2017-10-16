@@ -4,7 +4,6 @@
 }
 
 body {
-  background: gray url(https://www.toptal.com/designers/subtlepatterns/patterns/food.png) repeat 0 0;
   width: 100%;
   margin: 0;
   text-align: center;
@@ -15,15 +14,38 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
   grid-template-rows: 60px 1fr 1fr 1fr 40px;
+  z-index: 1;
+  background-color: black;
+}
+
+.video-container {
+  background-color: black;
+  opacity: .4;
+}
+
+#mainText {
+  grid-column: 3/4;
+  grid-row: 2/3;
+  z-index: 2;
+  color: white;
+  font-family: 'Baloo Tammudu', bold;
+}
+
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/1200px-Good_Food_Display_-_NCI_Visuals_Online.jpg');
+  background-size: cover;
+  transition: 1s opacity;
   z-index: 0;
 }
 
-header {
-  height: 60px;
-  grid-column: 1/6;
-  grid-row: 1/2;
-  background-color: white;
-}
 
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -36,30 +58,29 @@ header {
     z-index: 5;
     grid-column: 3/4;
     grid-row: 3/4;
+    z-index: 1;
 }
 
 #locationText {
   grid-column: 3/4;
   margin-top: 80px;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Baloo Tammudu';
 }
 
-#headerIcon {
-  margin-top: 10px;
-  height: 40px;
-  width: 40px;
-}
+
 
 footer {
   background-color: white;
   grid-column: 1/6;
   grid-row: 6/7;
   height: 40px;
-  z-index: 1;
+  z-index: 2;
+  background: gray url(https://www.toptal.com/designers/subtlepatterns/patterns/food.png) repeat 0 0;
+   -webkit-animation: slide 20s linear infinite;
 }
 
 #footerText {
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Baloo Tammudu';
   color: #2d2b2b;
   margin-top: 7px;
 }
@@ -71,6 +92,34 @@ footer {
   grid-column: 3/4;
   grid-row: 3/4;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+
+#address {
+  display: block;
+  padding: 10px;
+  height: 20px;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+  grid-row: 2/3;
+  grid-column: 2/4;
+  font-family: 'Baloo Tammudu';
+}
+
+#address:focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+
+#price {
+  margin-top: 25px;
+}
+
+#number {
+  margin-top: 30px;
 }
 
 #locationBtn {
@@ -80,7 +129,9 @@ footer {
   background-color: #2d2b2b;
   border-radius: 8px;
   color: white;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Baloo Tammudu';
+  grid-row: 3/4;
+  grid-column: 2/4;
 }
 
 #locationBtn:hover {
@@ -93,7 +144,21 @@ footer {
   background-color: white;
   grid-column: 3/4;
   grid-row: 3/4;
+  z-index: 2;
+}
+
+#nextBtn {
+  grid-column: 3/4;
+  grid-row: 4/5;
+  margin-top: 20px;
+  border: none;
+  height: 40px;
+  font-family: 'Baloo Tammudu';
   z-index: 1;
+}
+
+#nextBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 #textLogo {
@@ -130,28 +195,22 @@ img {
   max-height: 100%;
 }
 #result-section {
-  grid-row: 1/7;
-  grid-column: 1/6;
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
-  grid-template-rows: 60px 1fr 1fr 1fr 40px;
+ height: 300px;
+  width: 400px;
+  background-color: white;
+  grid-column: 3/4;
+  grid-row: 3/4;
+  z-index: 1;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 #rest-info {
   grid-column: 1/4;
-  grid-row: 3/4;
+  grid-row: 1/2;
   background-color: white;
 }
 
-#more-info {
-  background-color: white;
-  grid-column: 5/6;
-  grid-row: 3/4;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
 #imageContainer {
   height: 100%;
@@ -169,20 +228,16 @@ img {
 
 #restName {
   margin-top: 5px;
-  font-family: 'Indie Flower', cursive;
-}
-
-#address {
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Baloo Tammudu';
 }
 
 #rating {
-  margin-top: 60px;
-  font-family: 'Indie Flower', cursive;
+  margin-top: 10px;
+  font-family: 'Baloo Tammudu';
 }
 #restCat {
   margin-top: 20px;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Baloo Tammudu';
 }
 
 #averageText {
@@ -199,9 +254,9 @@ img {
   font-family: 'Indie Flower', cursive;
 }
 
-#nahBtn {
-  grid-column: 3/4;
-  grid-row: 4/5;
+#directionsBtn {
+  display: block;
+  float: left;
   margin-top: 50px;
   border: none;
   height: 50px;
@@ -209,9 +264,29 @@ img {
   color: white;
   border-radius: 8px;
   background-color: #2d2b2b;
+  width: 40%;
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
-#nahBtn:hover {
+#websiteBtn {
+  display: block;
+  margin-right: 20px;
+  float: right;
+  margin-top: 50px;
+  border: none;
+  height: 50px;
+  font-family: 'Indie Flower', cursive;
+  color: white;
+  border-radius: 8px;
+  background-color: #2d2b2b;
+  width: 40%;
+}
+
+#websiteBtn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+#directionsBtn:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
