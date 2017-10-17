@@ -107,7 +107,7 @@ $.ajax(settings);
 function showPosition(position) {
   latitude = position.coords.latitude;
   longitude = position.coords.longitude;
-  $.ajax(`http://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true`, {
+  $.ajax(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true`, {
     method: 'GET',
     success: (response) => {
       console.log(response.results[0].formatted_address);
