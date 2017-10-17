@@ -74,7 +74,7 @@ function displayData(data) {
   for(let i=0;i<data.restaurants.length;i++) {
     restIds.push(data.restaurants[i].restaurant.id);
   }
-  var randomNumber = Math.floor(Math.random() * (restIds.length + 1)) + 0;
+  var randomNumber = Math.floor(Math.random() * (restIds.length)) + 0;
   //getRestaurantInfo(restIds[randomNumber], displayRestaurant);
 }
 
@@ -148,7 +148,8 @@ $.ajax(settings);
 
 function callback(data) {
 	console.log(data.restaurants);
-	let randomNumber = Math.floor((Math.random() * data.restaurants.length-1) + 0);
+	let max = data.restaurants.length-1;
+	let randomNumber = Math.floor((Math.random() * max + 1) + 0);
 	console.log(data.restaurants[randomNumber]);
 	for(let i=0; i<data.restaurants.length;i++) {
 		restIds.push(data.restaurants[i].restaurant.id);
@@ -183,8 +184,8 @@ function getLocationDetails(restId) {
 $('#nextBtn').on('click', event => {
   $('#result-section').hide();
   $('#nextBtn').hide();
-  var randomNumber = Math.floor(Math.random() * (restIds.length + 1)) + 0;
-
+  let max = restIds.length-1;
+	let randomNumber = Math.floor((Math.random() * max + 1) + 0);
   getRestaurantInfo(restIds[randomNumber], displayRestaurant);
   console.log(restIds[randomNumber]);
   console.log(randomNumber);
