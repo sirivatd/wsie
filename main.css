@@ -269,6 +269,10 @@ img {
   margin-bottom: 20px;
 }
 
+#votes {
+	margin-bottom: 20px;
+}
+
 #websiteBtn {
   display: block;
   margin-right: 20px;
