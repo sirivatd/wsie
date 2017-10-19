@@ -162,7 +162,9 @@ function callback(data) {
     startCount = startCount + 20;
     googlePlacesApi();
   }
+  else {
 	getRestaurantInfo(restIds[randomNumber], displayRestaurant);
+}
 }
 function getLocationDetails(restId) {
   console.log(restId);
