@@ -18,6 +18,10 @@ body {
   background-color: black;
 }
 
+a:link {
+    text-decoration: none;
+}
+
 .video-container {
   background-color: black;
   opacity: .4;
@@ -95,6 +99,7 @@ footer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
+  opacity: .8;
 }
 
 
@@ -107,6 +112,7 @@ footer {
   grid-row: 2/3;
   grid-column: 2/4;
   font-family: 'Baloo Tammudu';
+  z-index: 2;
 }
 
 #address:focus {
@@ -115,7 +121,10 @@ footer {
 }
 
 #price {
-  margin-top: 25px;
+  font-family: 'Baloo Tammudu';
+  margin-top: 15px;
+  grid-row: 3;
+
 }
 
 #number {
@@ -132,6 +141,7 @@ footer {
   font-family: 'Baloo Tammudu';
   grid-row: 3/4;
   grid-column: 2/4;
+  z-index: 2;
 }
 
 #locationBtn:hover {
@@ -155,10 +165,12 @@ footer {
   height: 40px;
   font-family: 'Baloo Tammudu';
   z-index: 1;
+  margin-top: 30px;
 }
 
 #nextBtn:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  height: 60px;
 }
 
 #textLogo {
@@ -195,35 +207,45 @@ img {
   max-height: 100%;
 }
 #result-section {
- height: 300px;
+}
+
+#rest-info {
+  height: 500px;
   width: 400px;
   background-color: white;
-  grid-column: 3/4;
+  grid-column: 2/4;
   grid-row: 3/4;
   z-index: 1;
+  opacity: .8;
+  width: 100%;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
-#rest-info {
-  grid-column: 1/4;
-  grid-row: 1/2;
-  background-color: white;
-}
-
 
 #imageContainer {
-  height: 100%;
-  width: 50%;
-  float: left;
-  background-color: black;
-  opacity: .7;
+  height: 325px;
+  width: 100%;
+  background-color: white;
+  grid-column: 2/4;
+  grid-row: 3/4;
+  z-index: 1;
+  opacity: .8;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 #restSummary {
-  height: 100%;
-  width: 50%;
-  float: right;
+  height: 325px;
+  width: 100%;
+  background-color: white;
+  grid-column: 4/5;
+  grid-row: 3/4;
+  z-index: 1;
+  opacity: .8;
+  width: 100%;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
 #restName {
@@ -234,10 +256,12 @@ img {
 #rating {
   margin-top: 10px;
   font-family: 'Baloo Tammudu';
+  grid-row: 2;
 }
 #restCat {
   margin-top: 20px;
   font-family: 'Baloo Tammudu';
+  grid-row: 1;
 }
 
 #averageText {
@@ -256,35 +280,35 @@ img {
 
 #directionsBtn {
   display: block;
-  float: left;
-  margin-top: 50px;
+  margin-right: 20px;
   border: none;
   height: 50px;
   font-family: 'Baloo Tammudu';
   color: white;
   border-radius: 8px;
   background-color: #2d2b2b;
-  width: 40%;
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-
-#votes {
-	margin-bottom: 20px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 20px;
+  grid-row: 4;
 }
 
 #websiteBtn {
   display: block;
-  margin-right: 20px;
-  float: right;
-  margin-bottom: 5px;
   border: none;
   height: 50px;
   font-family: 'Baloo Tammudu';
   color: white;
   border-radius: 8px;
   background-color: #2d2b2b;
-  width: 40%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 10px;
+  grid-row: 5;
 }
 
 #websiteBtn:hover {

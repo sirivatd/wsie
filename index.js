@@ -3,6 +3,7 @@ let latitude = 0;
 let longitude = 0;
 let alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','y','z'];
 var map;
+var startCount = 0;
 
 $('#startBtn').on('click', event => {
   $('.loader').show();
@@ -42,15 +43,15 @@ function displayRestaurant(data) {
 
   $('#nextBtn').show();
   $('#mainText').text(data.name);
-  $('#price').text("Average Cost For Two: $" + data.average_cost_for_two);
+  $('#price').text("$" + data.average_cost_for_two + " (Average cost for two)");
   $('#restCat').text(data.cuisines);
   $('#restImage').attr('src', data.featured_image);
-  $('#rating').text("Average Rating: " + data.user_rating.aggregate_rating + " (" + data.user_rating.rating_text + ")");
+  $('#rating').text(data.user_rating.aggregate_rating + " (" + data.user_rating.rating_text + ")");
   $('#websiteBtn').attr('href', data.url);
   $('#directionsBtn').attr('href', `http://maps.google.com/maps?q=${data.location.address}`);
-  $('#votes').text("Upvotes: " + data.user_rating.votes);
   $('.loader').hide();
-  $('#result-section').show();
+  $('#imageContainer').show()
+  $('#restSummary').show();
 }
 
 function getRestaurantInfo(query, callback) {
@@ -135,7 +136,9 @@ function googlePlacesApi() {
   },
   data: {
     lat: latitude,
-    lon: longitude
+    lon: longitude,
+    start: startCount,
+    count: 20
   },
   dataType: 'json',
   url: `https://developers.zomato.com/api/v2.1/search`,
@@ -147,7 +150,7 @@ $.ajax(settings);
 }
 
 function callback(data) {
-	console.log(data.restaurants);
+	console.log(data);
 	let max = data.restaurants.length-1;
 	let randomNumber = Math.floor((Math.random() * max + 1) + 0);
 	console.log(data.restaurants[randomNumber]);
@@ -155,6 +158,10 @@ function callback(data) {
 		restIds.push(data.restaurants[i].restaurant.id);
 	}
 	console.log(randomNumber);
+  if(startCount < 80) {
+    startCount = startCount + 20;
+    googlePlacesApi();
+  }
 	getRestaurantInfo(restIds[randomNumber], displayRestaurant);
 }
 function getLocationDetails(restId) {
@@ -177,12 +184,15 @@ function getLocationDetails(restId) {
     }
   });
   $('.loader').hide();
-  $('#result-section').show();
+  $('#imageContainer').show()
+  $('#restSummary').show();
   $('#nextBtn').show();
 }
 
 $('#nextBtn').on('click', event => {
-  $('#result-section').hide();
+
+  $('#imageContainer').hide()
+  $('#restSummary').hide();
   $('#nextBtn').hide();
   let max = restIds.length-1;
 	let randomNumber = Math.floor((Math.random() * max + 1) + 0);
@@ -193,7 +203,8 @@ $('#nextBtn').on('click', event => {
 })
 
 function renderWSIE() {
-  $('#result-section').hide();
+  $('#imageContainer').hide()
+  $('#restSummary').hide();
   $('#start-section').hide();
   $('#location-section').show();
   $('.loader').hide();
